@@ -1,0 +1,11 @@
+C:/musteri_portali/build/windows/runner/Debug/data/icudtl.dat
+C:/musteri_portali/build/windows/runner/Debug/flutter_windows.dll
+C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/AssetManifest.bin
+C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/AssetManifest.json
+C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/assets/logo.png
+C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/FontManifest.json
+C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/NOTICES.Z
+C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag
