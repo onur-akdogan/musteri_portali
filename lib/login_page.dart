@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musteri_portali/dashboard.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -25,23 +26,23 @@ class _LoginPageState extends State<LoginPage> {
                 width: 100,
                 height: 100,
               ),
-              SizedBox(height: 30),
-              Text(
+              const SizedBox(height: 30),
+              const Text(
                 'BOTAŞ MÜŞTERİ PORTALI',
                 style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 24,
                     fontFamily: 'poppins'),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 'MOBİL UYGULAMASI',
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 16,
                     fontFamily: 'poppins'),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               //Kullanıcı Adı Bölümü
 
               Padding(
@@ -55,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.only(left: 8.0),
                     child: TextField(
                       controller: _kullaniciAdi,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Kullanıcı Adı',
                       ),
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               //Şifre Bölümü
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Container(
@@ -77,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       controller: _sifre,
                       obscureText: true, //Şifre gizleme
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Şifre',
                       ),
@@ -86,18 +87,18 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               //Giriş Butonu
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),  
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: InkWell(
                   onTap: _login,
                   child: Container(
-                    padding: EdgeInsets.all(13),
+                    padding: const EdgeInsets.all(13),
                     decoration: BoxDecoration(
                       color: Colors.red[900],
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Giriş Yap',
                         style: TextStyle(
@@ -111,8 +112,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
-              Row(
+              const SizedBox(height: 10),
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Şifrenizi mi unuttunuz?',
@@ -137,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
       // Kullanıcı adı ve şifre doğruysa Dashboard sayfasına yönlendir
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
+        MaterialPageRoute(builder: (context) => const Dashboard()),
       );
     } else {
       // Kullanıcı adı ve şifre yanlışsa hata mesajı göster
@@ -145,14 +146,14 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Giriş Yapılamadı'),
-            content: Text('Kullanıcı Adı veya Şifre Yanlış.'),
+            title: const Text('Giriş Yapılamadı'),
+            content: const Text('Kullanıcı Adı veya Şifre Yanlış.'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Tamam'),
+                child: const Text('Tamam'),
               ),
             ],
           );

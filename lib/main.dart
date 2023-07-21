@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musteri_portali/login_page.dart';
 //import 'login_page.dart';
 import 'dashboard.dart';
 
@@ -11,10 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Dashboard(
-      ),
+      home: LoginPage(),
     );
   }
 }

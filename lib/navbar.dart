@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
@@ -11,24 +12,24 @@ class Navbar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('Burak'),
-            accountEmail: Text('info@botas.gov.tr'),
+            accountName: const Text('Burak'),
+            accountEmail: const Text('info@botas.gov.tr'),
             currentAccountPicture: CircleAvatar(
               backgroundColor: Colors.transparent,
               child: ClipOval(
                 child: Image.asset(
                     //'https://oflutter.com/wp-content/uploads/2021/02/girl-profile.png',
-                    'assets/logo.png', 
+                    'assets/logo.png',
                     height: 250,
                     filterQuality: FilterQuality.high,
                     fit: BoxFit.fitWidth),
               ),
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color.fromARGB(255, 228, 148, 150),
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.home),
             title: Text(
               'Anasayfa',
@@ -36,7 +37,7 @@ class Navbar extends StatelessWidget {
             ),
             onTap: null,
           ),
-          ExpansionTile(
+          const ExpansionTile(
             leading: Icon(Icons.home),
             title: Text(
               'TMB',
@@ -64,7 +65,7 @@ class Navbar extends StatelessWidget {
             ],
           ),
           //Sözleşme Navbar
-          ExpansionTile(
+          const ExpansionTile(
             leading: Icon(Icons.border_color),
             title: Text(
               'Sözleşme',
@@ -91,7 +92,7 @@ class Navbar extends StatelessWidget {
               ),
             ],
           ),
-          ExpansionTile(
+          const ExpansionTile(
             leading: Icon(Icons.newspaper),
             title: Text(
               'Fatura',
@@ -128,7 +129,7 @@ class Navbar extends StatelessWidget {
               ),
             ],
           ),
-          ExpansionTile(
+          const ExpansionTile(
             leading: Icon(Icons.data_saver_on),
             title: Text(
               'Veri',
@@ -156,7 +157,12 @@ class Navbar extends StatelessWidget {
               'Çıkış',
               style: TextStyle(fontSize: 18),
             ),
-            onTap: null,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            },
           ),
         ],
       ),
