@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musteri_portali/login_page.dart';
 //import 'login_page.dart';
-import 'dashboard.dart';
+//import 'dashboard.dart';
 
 void main() {
   runApp(const MyApp());

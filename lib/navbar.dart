@@ -152,8 +152,8 @@ class Navbar extends StatelessWidget {
             ],
           ),
           ListTile(
-            leading: Icon(Icons.logout),
-            title: Text(
+            leading: const Icon(Icons.logout),
+            title: const Text(
               'Çıkış',
               style: TextStyle(fontSize: 18),
             ),
