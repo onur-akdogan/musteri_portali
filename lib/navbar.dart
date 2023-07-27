@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:musteri_portali/miktar.dart';
 import 'login_page.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
+  // ignore: constant_identifier_names
   static const IconData bar_chart =
       IconData(0xe0cc, fontFamily: 'MaterialIcons');
   @override
@@ -37,7 +39,7 @@ class Navbar extends StatelessWidget {
             ),
             onTap: null,
           ),
-          const ExpansionTile(
+          ExpansionTile(
             leading: Icon(Icons.home),
             title: Text(
               'TMB',
@@ -50,7 +52,12 @@ class Navbar extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.home),
                 title: Text('Miktar Girişi'),
-                onTap: null,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MiktarPage()),
+                  );
+                },
               ),
               ListTile(
                 leading: Icon(Icons.home),

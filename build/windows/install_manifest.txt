@@ -2,6 +2,7 @@ C:/musteri_portali/build/windows/runner/Debug/data/icudtl.dat
 C:/musteri_portali/build/windows/runner/Debug/flutter_windows.dll
 C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/AssetManifest.bin
 C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/AssetManifest.json
+C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/assets/baskent_logo.png
 C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/assets/logo.png
 C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/FontManifest.json
 C:/musteri_portali/build/windows/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
