@@ -12,7 +12,7 @@ class DatePickerApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(useMaterial3: true),
       restorationScopeId: 'app',
-      home: const DatePickerExample(restorationId: 'main'),
+      home: const DatePickerExample(restorationId: 'main'), 
     );
   }
 }
@@ -58,8 +58,9 @@ class _DatePickerExampleState extends State<DatePickerExample>
           restorationId: 'date_picker_dialog',
           initialEntryMode: DatePickerEntryMode.calendarOnly,
           initialDate: DateTime.fromMillisecondsSinceEpoch(arguments! as int),
-          firstDate: DateTime(2021),
-          lastDate: DateTime(2099),
+          firstDate: DateTime(DateTime.now().year, DateTime.now().month,
+              DateTime.now().day - 10),
+          lastDate: DateTime.now(),
         );
       },
     );
