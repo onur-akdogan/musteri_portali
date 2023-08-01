@@ -158,12 +158,6 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "logging",
-      "rootUri": "file:///C:/Users/burak/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
-    },
-    {
       "name": "matcher",
       "rootUri": "file:///C:/Users/burak/AppData/Local/Pub/Cache/hosted/pub.dev/matcher-0.12.15",
       "packageUri": "lib/",
@@ -182,12 +176,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "mysql1",
-      "rootUri": "file:///C:/Users/burak/AppData/Local/Pub/Cache/hosted/pub.dev/mysql1-0.20.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "path",
       "rootUri": "file:///C:/Users/burak/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.8.3",
       "packageUri": "lib/",
@@ -202,6 +190,12 @@
     {
       "name": "pedantic",
       "rootUri": "file:///C:/Users/burak/AppData/Local/Pub/Cache/hosted/pub.dev/pedantic-1.11.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "persistent_bottom_nav_bar",
+      "rootUri": "file:///C:/Users/burak/AppData/Local/Pub/Cache/hosted/pub.dev/persistent_bottom_nav_bar-5.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -344,7 +338,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-07-24T11:28:10.532741Z",
+  "generated": "2023-08-01T08:17:51.220119Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

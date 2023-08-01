@@ -1,26 +1,26 @@
-import 'package:flutter/material.dart';
-import 'navbar.dart';
+  import 'package:flutter/material.dart';
+  import 'navbar.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+  class Dashboard extends StatefulWidget {
+    const Dashboard({super.key});
 
-  @override
-  State<Dashboard> createState() => _DashboardState();
-}
-
-class _DashboardState extends State<Dashboard> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: const Navbar(),
-      appBar: AppBar(
-        title: const Text('BOTAŞ MÜŞTERİ PORTALI'),
-        backgroundColor: const Color.fromARGB(255, 210, 20, 26),
-      ),
-      body: const MainPage(),
-    );
+    @override
+    State<Dashboard> createState() => _DashboardState();
   }
-}
+
+  class _DashboardState extends State<Dashboard> {
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        drawer: const Navbar(),
+        appBar: AppBar(
+          title: const Text('BOTAŞ MÜŞTERİ PORTALI'),
+          backgroundColor: const Color.fromARGB(255, 210, 20, 26),
+        ),
+        body: const MainPage(),
+      );
+    }
+  }
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});

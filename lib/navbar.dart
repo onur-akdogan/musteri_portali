@@ -40,7 +40,7 @@ class Navbar extends StatelessWidget {
             onTap: null,
           ),
           ExpansionTile(
-            leading: Icon(Icons.home),
+            leading: const Icon(Icons.home),
             title: const Text(
               'TMB',
               style: TextStyle(
@@ -50,21 +50,21 @@ class Navbar extends StatelessWidget {
             ),
             children: [
               ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Miktar Girişi'),
-                onTap: () {
+                leading: const Icon(Icons.home),
+                title: const Text('Miktar Girişi'),
+                onTap: /* null */ () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DatePickerApp()),
+                    MaterialPageRoute(builder: (context) => const MiktarPage()),
                   );
                 },
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(Icons.home),
                 title: Text('TMB Arşivi'),
                 onTap: null,
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(Icons.home),
                 title: Text('TMB Grafiği'),
                 onTap: null,
