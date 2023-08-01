@@ -25,13 +25,29 @@ class NavigationExample extends StatefulWidget {
 
 class _NavigationExampleState extends State<NavigationExample> {
   int currentPageIndex = 0;
-
+//ListTile İçine Al
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const Navbar(),
       appBar: AppBar(
-        title: const Text('BOTAŞ MÜŞTERİ PORTALI'),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'BOTAŞ',
+              //style: TextStyle(fontSize: 81),
+            ),
+            Visibility(
+              visible: true,
+              child: Text(
+                'Müşteri Portalı',
+                style: TextStyle(fontSize: 10.0, letterSpacing: 1),
+              ),
+            ),
+          ],
+        ),
         backgroundColor: const Color.fromARGB(255, 210, 20, 26),
       ),
       bottomNavigationBar: NavigationBar(
@@ -65,15 +81,14 @@ class _NavigationExampleState extends State<NavigationExample> {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 48),
-                // En yukarıda Miktar Girişi yazısı
-                const Text(
-                  'TMB -> Miktar Girişi',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'poppins',
+                ListTile(
+                  title: const Text(
+                    'Gerçekleşen Tüketim',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: const Text(
+                    'Tüketim miktarlarınızı görebilirsiniz',
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
                 const SizedBox(height: 16), // Boşluk eklemek için SizedBox
