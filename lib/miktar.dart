@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'navbar.dart';
 
-/// Flutter code sample for [NavigationBar].
-
 void main() => runApp(const NavigationBarApp());
 
 class NavigationBarApp extends StatelessWidget {
@@ -25,7 +23,6 @@ class NavigationExample extends StatefulWidget {
 
 class _NavigationExampleState extends State<NavigationExample> {
   int currentPageIndex = 0;
-  DateTime? selectedDate; // Seçilen tarihi saklayacak değişken
 
   @override
   Widget build(BuildContext context) {
@@ -74,144 +71,139 @@ class _NavigationExampleState extends State<NavigationExample> {
         ],
       ),
       body: SingleChildScrollView(
-        // Sayfayı kaydırılabilir yapar
-        child: Column(
-          children: [
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  children: [
-                    ListTile(
-                      title: const Text(
-                        'Gerçekleşen Tüketim',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+        // SingleChildScrollView kullanıldı
+        child: <Widget>[
+          //Gerçekleşen Tüketim
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: Column(
+                children: [
+                  ListTile(
+                    title: const Text(
+                      'Gerçekleşen Tüketim',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: const Text(
+                      'Tüketim miktarlarınızı görebilirsiniz',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  DropdownButton<String>(
+                    items: [
+                      DropdownMenuItem(
+                        child: Text('Ankara'),
+                        value: 'Ankara',
                       ),
-                      subtitle: const Text(
-                        'Tüketim miktarlarınızı görebilirsiniz',
-                        style: TextStyle(fontSize: 16),
+                      DropdownMenuItem(
+                        child: Text('İstanbul'),
+                        value: 'İstanbul',
                       ),
-                    ),
-                    SizedBox(height: 16), // Boşluk eklemek için SizedBox
-                    // Dropdown Menü
-                    DropdownButton<String>(
-                      items: [
-                        DropdownMenuItem(
-                          child: Text('Ankara'),
-                          value: 'Ankara',
-                        ),
-                        DropdownMenuItem(
-                          child: Text('İstanbul'),
-                          value: 'İstanbul',
-                        ),
-                        DropdownMenuItem(
-                          child: Text('Bolu'),
-                          value: 'Bolu',
-                        ),
-                        DropdownMenuItem(
-                          child: Text('Mersin'),
-                          value: 'Mersin',
-                        ),
-                        DropdownMenuItem(
-                          child: Text('Kayseri'),
-                          value: 'Kayseri',
-                        ),
-                      ],
-                      onChanged: (selectedStation) {},
-                      hint: Text('İstasyon Seçin'), // Başlangıçta görünen metin
-                      isExpanded: true, // Menünün genişlemesini sağlar
-                    ),
-                    SizedBox(height: 16), // Boşluk eklemek için SizedBox
-                    // 3 tane radio buton
-                    Row(
-                      children: [
-                        Radio(
-                          value: 'ST',
-                          groupValue: 'radioGroup',
-                          onChanged: (value) {
-                            // Seçilen değeri almak için bir fonksiyon
-                            // Burada seçilen radio buton değerini kullanabilirsiniz.
-                          },
-                        ),
-                        Text('ST'),
-                        Radio(
-                          value: 'ABN',
-                          groupValue: 'radioGroup',
-                          onChanged: (value) {
-                            // Seçilen değeri almak için bir fonksiyon
-                            // Burada seçilen radio buton değerini kullanabilirsiniz.
-                          },
-                        ),
-                        Text('ABN'),
-                        Radio(
-                          value: 'ELK',
-                          groupValue: 'radioGroup',
-                          onChanged: (value) {
-                            // Seçilen değeri almak için bir fonksiyon
-                            // Burada seçilen radio buton değerini kullanabilirsiniz.
-                          },
-                        ),
-                        Text('ELK'),
-                      ],
-                    ),
-                    SizedBox(height: 16), // Boşluk eklemek için SizedBox
-                    // Tarih Seçme Ekranı
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(double.infinity, 40),
+                      DropdownMenuItem(
+                        child: Text('Bolu'),
+                        value: 'Bolu',
                       ),
-                      onPressed: () {
-                        _selectDate(context);
-                      },
-                      child: Text(
-                        'Tarih Seçin',
-                        style: TextStyle(fontFamily: 'poppins'),
+                      DropdownMenuItem(
+                        child: Text('Mersin'),
+                        value: 'Mersin',
                       ),
-                    ),
-                    SizedBox(height: 16), // Boşluk eklemek için SizedBox
-                    // Tarih Yazacak
-                    Text(
-                      'Seçilen Tarih: 31 Ağustos 2023', // Örnek tarih, seçilen tarih ile değiştirilecek
-                      style: TextStyle(fontSize: 16, fontFamily: 'poppins'),
-                    ),
-                    SizedBox(height: 32), // Boşluk eklemek için SizedBox
-                    Text(
-                      'Gerçekleşen Miktar',
-                      style: TextStyle(
-                          fontFamily: 'poppins',
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Gerçekleşen Miktar',
+                      DropdownMenuItem(
+                        child: Text('Kayseri'),
+                        value: 'Kayseri',
                       ),
-                    ),
-                    SizedBox(height: 16), // Boşluk eklemek için SizedBox
-                    // 'Miktar Girişi Kaydet' butonu
-                    ElevatedButton(
-                      onPressed: () {
-                        _showMessage(
-                            context); // Butona tıklandığında bir işlem yapmak için bir fonksiyon çağırabilirsiniz.
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.red, // Kırmızı renk
-                        minimumSize: Size(double.infinity, 40),
+                    ],
+                    onChanged: (selectedStation) {},
+                    hint: const Text(
+                        'İstasyon Seçin'), // Başlangıçta görünen metin
+                    isExpanded: true, // Menünün genişlemesini sağlar
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Radio(
+                        value: 'ST',
+                        groupValue: 'radioGroup',
+                        onChanged: (value) {
+                          // Seçilen değeri almak için bir fonksiyon
+                          // Burada seçilen radio buton değerini kullanabilirsiniz.
+                        },
                       ),
-                      child: Text('Miktar Girişi Kaydet'),
+                      Text('ST'),
+                      Radio(
+                        value: 'ABN',
+                        groupValue: 'radioGroup',
+                        onChanged: (value) {
+                          // Seçilen değeri almak için bir fonksiyon
+                          // Burada seçilen radio buton değerini kullanabilirsiniz.
+                        },
+                      ),
+                      const Text('ABN'),
+                      Radio(
+                        value: 'ELK',
+                        groupValue: 'radioGroup',
+                        onChanged: (value) {
+                          // Seçilen değeri almak için bir fonksiyon
+                          // Burada seçilen radio buton değerini kullanabilirsiniz.
+                        },
+                      ),
+                      const Text('ELK'),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: Size(double.infinity, 40)),
+                    onPressed: () {
+                      // Tarih seçiciyi açmak için bir fonksiyon çağırabilirsiniz.
+                    },
+                    child: const Text(
+                      'Tarih Seçin',
+                      style: TextStyle(fontFamily: 'poppins'),
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Seçilen Tarih: 31 Ağustos 2023', // Örnek tarih, seçilen tarih ile değiştirilecek
+                    style: TextStyle(fontSize: 16, fontFamily: 'poppins'),
+                  ),
+                  const SizedBox(height: 32),
+                  const Text(
+                    'Gerçekleşen Miktar',
+                    style: TextStyle(
+                        fontFamily: 'poppins',
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  const TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Gerçekleşen Miktar',
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {
+                      _showMessage(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.red,
+                        minimumSize: Size(double.infinity, 40)),
+                    child: const Text('Miktar Girişi Kaydet'),
+                  ),
+                ],
               ),
             ),
-            Container(),
-            Container(),
-          ],
-        ),
+          ),
+          //Tahmini Tüketim
+          Container(),
+          Container(),
+        ][currentPageIndex],
       ),
     );
   }
@@ -223,21 +215,5 @@ class _NavigationExampleState extends State<NavigationExample> {
         duration: Duration(seconds: 2),
       ),
     );
-  }
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now().subtract(Duration(days: 10)),
-      lastDate: DateTime.now(),
-    );
-
-    if (picked != null && picked != selectedDate) {
-      // Seçilen tarih değiştirildiyse setState ile yeniden oluşturuyoruz
-      setState(() {
-        selectedDate = picked;
-      });
-    }
   }
 }
