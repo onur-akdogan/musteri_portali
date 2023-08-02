@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'navbar.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 void main() => runApp(const NavigationBarApp());
 
@@ -23,6 +24,7 @@ class NavigationExample extends StatefulWidget {
 
 class _NavigationExampleState extends State<NavigationExample> {
   int currentPageIndex = 0;
+  // Seçilen tarihi tutmak için değişken
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,6 @@ class _NavigationExampleState extends State<NavigationExample> {
           children: <Widget>[
             Text(
               'BOTAŞ',
-              //style: TextStyle(fontSize: 81),
             ),
             Visibility(
               visible: true,
@@ -71,7 +72,6 @@ class _NavigationExampleState extends State<NavigationExample> {
         ],
       ),
       body: SingleChildScrollView(
-        // SingleChildScrollView kullanıldı
         child: <Widget>[
           //Gerçekleşen Tüketim
           Container(
@@ -156,21 +156,31 @@ class _NavigationExampleState extends State<NavigationExample> {
                   const SizedBox(height: 16),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        minimumSize: Size(double.infinity, 40)),
+                      minimumSize: Size(double.infinity, 40),
+                    ),
                     onPressed: () {
-                      // Tarih seçiciyi açmak için bir fonksiyon çağırabilirsiniz.
+                      DatePicker.showDatePicker(context,
+                          showTitleActions: true,
+                          minTime: DateTime.now(),
+                          maxTime: DateTime(2099), onChanged: (date) {
+                        print('change $date');
+                      }, onConfirm: (date) {
+                        print('confirm $date');
+                      }, currentTime: DateTime.now(), locale: LocaleType.tr);
                     },
-                    child: const Text(
-                      'Tarih Seçin',
-                      style: TextStyle(fontFamily: 'poppins'),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(Icons.calendar_today), // Tarih seçici simgesi
+                        SizedBox(width: 8), // Simge ile metin arasında boşluk
+                        Text(
+                          'Tarih Seçin',
+                          style: TextStyle(fontFamily: 'poppins'),
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
-                    'Seçilen Tarih: 31 Ağustos 2023', // Örnek tarih, seçilen tarih ile değiştirilecek
-                    style: TextStyle(fontSize: 16, fontFamily: 'poppins'),
-                  ),
-                  const SizedBox(height: 32),
                   const Text(
                     'Gerçekleşen Miktar',
                     style: TextStyle(
@@ -207,13 +217,13 @@ class _NavigationExampleState extends State<NavigationExample> {
       ),
     );
   }
+}
 
-  void _showMessage(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Miktar kayıt edildi'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
+void _showMessage(BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text('Miktar kayıt edildi'),
+      duration: Duration(seconds: 2),
+    ),
+  );
 }
