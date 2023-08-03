@@ -61,7 +61,7 @@ class _NavigationExampleState extends State<NavigationExample> {
             Visibility(
               visible: true,
               child: Text(
-                'Müşteri Portalı',
+                'Müşteri Portalı -> Miktar Girişi ',
                 style: TextStyle(fontSize: 10.0, letterSpacing: 1),
               ),
             ),

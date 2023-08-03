@@ -36,7 +36,7 @@ class _tehisListeState extends State<tehisListe> {
             Visibility(
               visible: true,
               child: Text(
-                'Müşteri Portalı',
+                'Müşteri Portalı -> Tehis Listesi',
                 style: TextStyle(fontSize: 10.0, letterSpacing: 1),
               ),
             ),
