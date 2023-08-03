@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:musteri_portali/miktar.dart';
+//import 'package:musteri_portali/miktar.dart';
+import 'tmbarsiv.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: NavigationBarApp(),
+      home: tmbArsiv(),
     );
   }
 }
