@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musteri_portali/miktar.dart';
 import 'login_page.dart';
+import 'tmbarsiv.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
@@ -55,15 +56,21 @@ class Navbar extends StatelessWidget {
                 onTap: /* null */ () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const NavigationBarApp()),
+                    MaterialPageRoute(
+                        builder: (context) => const NavigationBarApp()),
                   );
                 },
               ),
-              const ListTile(
-                leading: Icon(Icons.home),
-                title: Text('TMB Arşivi'),
-                onTap: null,
-              ),
+              ListTile(
+                  leading: Icon(Icons.home),
+                  title: Text('TMB Arşivi'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const TMBarsivi()),
+                    );
+                  }),
               const ListTile(
                 leading: Icon(Icons.home),
                 title: Text('TMB Grafiği'),
