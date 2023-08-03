@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:musteri_portali/miktar.dart';
+import 'package:musteri_portali/tehislistesi.dart';
 import 'login_page.dart';
 import 'tmbarsiv.dart';
+import 'dashboard.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
@@ -32,13 +34,18 @@ class Navbar extends StatelessWidget {
               color: Color.fromARGB(255, 228, 148, 150),
             ),
           ),
-          const ListTile(
+          ListTile(
             leading: Icon(Icons.home),
             title: Text(
               'Anasayfa',
               style: TextStyle(fontSize: 18),
             ),
-            onTap: null,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Dashboard()),
+              );
+            },
           ),
           ExpansionTile(
             leading: const Icon(Icons.home),
@@ -79,7 +86,7 @@ class Navbar extends StatelessWidget {
             ],
           ),
           //Sözleşme Navbar
-          const ExpansionTile(
+          ExpansionTile(
             leading: Icon(Icons.border_color),
             title: Text(
               'Sözleşme',
@@ -97,7 +104,13 @@ class Navbar extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.home),
                 title: Text('Tehis Listesi'),
-                onTap: null,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TehisListesi()),
+                  );
+                },
               ),
               ListTile(
                 leading: Icon(Icons.home),
