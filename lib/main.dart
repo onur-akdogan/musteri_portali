@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:musteri_portali/dashboard.dart';
+import 'package:musteri_portali/login_page.dart';
 //import 'package:musteri_portali/miktar.dart';
 import 'tmbarsiv.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Dashboard(),
+      home: LoginPage(),
     );
   }
 }

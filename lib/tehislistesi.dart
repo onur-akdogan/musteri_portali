@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'navbar.dart';
 
+void main() {
+  runApp(TehisListesi());
+}
+
 class TehisListesi extends StatelessWidget {
   const TehisListesi({super.key});
 
@@ -21,6 +25,18 @@ class tehisListe extends StatefulWidget {
 }
 
 class _tehisListeState extends State<tehisListe> {
+  TextEditingController _searchController = TextEditingController();
+  List<String> filteredItems = List<String>.generate(16, (i) => '$i');
+
+  void _onCardTapped(String item) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DetailPage(cardItem: item),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,96 +60,90 @@ class _tehisListeState extends State<tehisListe> {
         ),
         backgroundColor: const Color.fromARGB(255, 210, 20, 26),
       ),
-      body: const Tablolama(),
-    );
-  }
-}
-
-class Tablolama extends StatefulWidget {
-  const Tablolama({super.key});
-
-  @override
-  State<Tablolama> createState() => _TablolamaState();
-}
-
-class _TablolamaState extends State<Tablolama> {
-  final List<String> items = List<String>.generate(10, (i) => '$i');
-
-  void _onCardTapped(int index) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => DetailPage(cardIndex: index),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.deepPurple[100],
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              for (var i = 1; i <= 16; i++) // Original card + 15 new cards
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: () => _onCardTapped(i),
-                    child: Card(
-                      color: Colors.deepPurple[50],
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(width: 2),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      child: ListTile(
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(width: 2),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                        leading: CircleAvatar(
-                          backgroundColor: const Color(0xff6ae792),
-                          child: Text(
-                            i.toString(),
-                            style: TextStyle(
-                              color: Colors.black,
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: TextField(
+              controller: _searchController,
+              onChanged: (value) {
+                setState(() {});
+              },
+              decoration: InputDecoration(
+                labelText: "Arama",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    for (var item in filteredItems)
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () => _onCardTapped(item),
+                          child: Card(
+                            color: Colors.deepPurple[50],
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 2),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                            ),
+                            child: ListTile(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(width: 2),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
+                              leading: CircleAvatar(
+                                backgroundColor: const Color(0xff6ae792),
+                                child: Text(
+                                  item,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              title: Text(
+                                "TEST",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: Text(
+                                "TEST",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              trailing: Icon(Icons.more_vert_sharp),
                             ),
                           ),
                         ),
-                        title: Text(
-                          "TEST",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Text(
-                          "TEST",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        trailing: Icon(Icons.more_vert_sharp),
-                      ),
-                    ),
-                  ),
-                )
-            ],
+                      )
+                  ],
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 }
 
 class DetailPage extends StatelessWidget {
-  final int cardIndex;
+  final String cardItem;
 
-  DetailPage({required this.cardIndex});
+  DetailPage({required this.cardItem});
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +168,7 @@ class DetailPage extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 210, 20, 26),
       ),
       body: Center(
-        child: Text("Tıklanan Card: $cardIndex"),
+        child: Text("Tıklanan Öğe: $cardItem"),
       ),
     );
   }
