@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musteri_portali/dashboard.dart';
+import 'forgot_password.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -49,9 +50,10 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(12)),
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: TextField(
@@ -113,16 +115,21 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 10),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Şifrenizi mi unuttunuz?',
+              InkWell(
+                onTap: _navigateToForgotPassword,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Şifrenizi mi unuttunuz?',
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
-                          fontFamily: 'poppins')),
-                ],
-              ),
+                          fontFamily: 'poppins'),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
@@ -160,5 +167,12 @@ class _LoginPageState extends State<LoginPage> {
         },
       );
     }
+  }
+
+  void _navigateToForgotPassword() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ForgotPassword()),
+    );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'navbar.dart';
 
 void main() {
-  runApp(TehisListesi());
+  runApp(const TehisListesi());
 }
 
 class TehisListesi extends StatelessWidget {
