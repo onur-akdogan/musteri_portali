@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:musteri_portali/miktar.dart';
-import 'package:musteri_portali/tehislistesi.dart';
+import 'package:musteri_portali/screens/miktar.dart';
+import 'package:musteri_portali/screens/tehislistesi.dart';
 import 'login_page.dart';
 import 'tmbarsiv.dart';
 import 'dashboard.dart';

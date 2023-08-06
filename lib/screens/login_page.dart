@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:musteri_portali/dashboard.dart';
+import 'package:musteri_portali/screens/dashboard.dart';
 import 'forgot_password.dart';
 
 class LoginPage extends StatefulWidget {
