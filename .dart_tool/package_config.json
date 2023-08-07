@@ -140,6 +140,18 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "http",
+      "rootUri": "file:///C:/Users/burak/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///C:/Users/burak/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "image",
       "rootUri": "file:///C:/Users/burak/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.0.17",
       "packageUri": "lib/",
@@ -338,7 +350,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-08-02T11:14:59.896525Z",
+  "generated": "2023-08-07T07:38:22.262990Z",
   "generator": "pub",
   "generatorVersion": "3.0.6"
 }

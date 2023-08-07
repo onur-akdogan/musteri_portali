@@ -42,6 +42,7 @@ dependencies:
   carousel_slider: ^4.2.1
   flutter_svg: ^2.0.7
   persistent_bottom_nav_bar: ^5.0.2
+  http: ^1.1.0
   
 
 
@@ -68,6 +69,7 @@ flutter:
   assets:
     - assets/logo.png
     - assets/baskent_logo.png
+    - assets/background.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

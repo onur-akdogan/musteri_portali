@@ -12,11 +12,11 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\bu
 	android:name
 		INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-33:12
-INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-33:12
-INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-33:12
-INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-33:12
-MERGED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-33:12
+ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-38:12
+INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-38:12
+INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-38:12
+INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-38:12
+MERGED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-38:12
 MERGED from [:flutter_native_splash] C:\musteri_portali\build\flutter_native_splash\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\burak\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\burak\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
@@ -40,18 +40,36 @@ INJECTED from C:\musteri_portali\android\app\src\debug\AndroidManifest.xml:1:1-7
 INJECTED from C:\musteri_portali\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 	package
 		INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-33:12
+		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-38:12
 		INJECTED from C:\musteri_portali\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-33:12
+		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-38:12
 		INJECTED from C:\musteri_portali\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-33:12
+		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:1-38:12
 		INJECTED from C:\musteri_portali\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:33:9-70
+MERGED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:33:9-70
+MERGED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:33:9-70
+	android:name
+		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:33:26-68
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:34:9-82
+	android:name
+		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:34:26-80
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:35:9-79
+	android:name
+		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:35:26-77
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:36:9-83
+	android:name
+		ADDED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml:36:26-81
 uses-sdk
 INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml
@@ -100,10 +118,6 @@ INJECTED from C:\musteri_portali\android\app\src\debug\AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from C:\musteri_portali\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\musteri_portali\android\app\src\debug\AndroidManifest.xml
-uses-permission#android.permission.INTERNET
-ADDED from C:\musteri_portali\android\app\src\debug\AndroidManifest.xml:6:5-66
-	android:name
-		ADDED from C:\musteri_portali\android\app\src\debug\AndroidManifest.xml:6:22-64
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\burak\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 	android:required
