@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musteri_portali/screens/miktar.dart';
-import 'package:musteri_portali/screens/tehislistesi.dart';
+import 'package:musteri_portali/screens/serbesttuketicibilidirimi.dart';
+import 'tehislistesi.dart';
 import 'login_page.dart';
 import 'tmbarsiv.dart';
 import 'dashboard.dart';
@@ -35,8 +36,8 @@ class Navbar extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text(
+            leading: const Icon(Icons.home),
+            title: const Text(
               'Anasayfa',
               style: TextStyle(fontSize: 18),
             ),
@@ -119,7 +120,7 @@ class Navbar extends StatelessWidget {
               ),
             ],
           ),
-          const ExpansionTile(
+          ExpansionTile(
             leading: Icon(Icons.newspaper),
             title: Text(
               'Fatura',
@@ -142,7 +143,14 @@ class Navbar extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.home),
                 title: Text('Serbest Tüketici Tanımlama'),
-                onTap: null,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SerbestTuketiciBildirimi(),
+                    ),
+                  );
+                },
               ),
               ListTile(
                 leading: Icon(Icons.home),

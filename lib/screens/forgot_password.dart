@@ -33,7 +33,7 @@ class _SifremiUnuttumState extends State<SifremiUnuttum> {
         elevation: 0,
         // Geri dönme butonunu eklemek için AppBar
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_outlined),
           onPressed: () {
             Navigator.push(
               context,
