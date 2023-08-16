@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'navbar.dart';
 
@@ -24,9 +25,9 @@ class _tmbArsivState extends State<tmbArsiv> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Navbar(),
+      drawer: const Navbar(),
       appBar: AppBar(
-        title: Column(
+        title: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -71,7 +72,7 @@ class _TablolamaState extends State<Tablolama> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[100],
+      backgroundColor: Colors.grey[100],
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -83,7 +84,7 @@ class _TablolamaState extends State<Tablolama> {
                   child: GestureDetector(
                     onTap: () => _onCardTapped(i),
                     child: Card(
-                      color: Colors.deepPurple[50],
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                         side: BorderSide(width: 2),
                         borderRadius: BorderRadius.all(
@@ -97,24 +98,15 @@ class _TablolamaState extends State<Tablolama> {
                             Radius.circular(20),
                           ),
                         ),
-                        leading: CircleAvatar(
-                          backgroundColor: const Color(0xff6ae792),
-                          child: Text(
-                            i.toString(),
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
                         title: Text(
-                          "TEST",
+                          "Teslim Noktası: $i",
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
-                          "TEST",
+                          "Tüketim Tarihi: 01.01.2021",
                           style: TextStyle(color: Colors.black),
                         ),
                         trailing: Icon(Icons.more_vert_sharp),
@@ -139,7 +131,7 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Column(
+        title: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -157,9 +149,82 @@ class DetailPage extends StatelessWidget {
         ),
         backgroundColor: const Color.fromARGB(255, 210, 20, 26),
       ),
-      body: Center(
-        child: Text("Tıklanan Card: $cardIndex"),
-      ),
+      body: Column(children: <Widget>[
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          height: 60,
+          child: CupertinoListTile(
+            title: Text(
+              'Teslim Noktası:',
+              style: TextStyle(fontSize: 28),
+            ),
+            subtitle: Text(
+              '$cardIndex',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 2, // Çizgi yüksekliği
+          color: CupertinoColors.systemGrey4, // Çizgi rengi
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          height: 60,
+          child: CupertinoListTile(
+            title: Text(
+              'Tüketim Tarihi:',
+              style: TextStyle(fontSize: 28),
+            ),
+            subtitle: Text(
+              '$cardIndex',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 2, // Çizgi yüksekliği
+          color: CupertinoColors.systemGrey4, // Çizgi rengi
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          height: 60,
+          child: CupertinoListTile(
+            title: Text(
+              'Miktar:',
+              style: TextStyle(fontSize: 28),
+            ),
+            subtitle: Text(
+              '$cardIndex',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }

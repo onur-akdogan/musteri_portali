@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:musteri_portali/screens/serbesttuketicibilidirimi.dart';
-import 'login_page.dart';
 
 void main() {
   runApp(const STEkleme());
@@ -32,83 +31,101 @@ class _SerbestTuketiciEklemeState extends State<SerbestTuketiciEkleme> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        // Geri dönme butonunu eklemek için AppBar
         leading: IconButton(
           icon: Icon(Icons.arrow_back_outlined),
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                      SerbestTuketiciBildirimi()), // Login sayfasına yönlendirme
+                  builder: (context) => SerbestTuketiciBildirimi()),
             );
           },
-          color: Colors.black,
+          color: Color.fromARGB(255, 10, 10, 10),
         ),
       ),
-      backgroundColor: Colors.grey[300],
-      body: SafeArea(
-        child: Center(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        // Ekranın klavye ile kaymasını sağlayan widget
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/logo.png',
-                width: 100,
-                height: 100,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 16),
+              Text(
+                'ST Müşteri Kodu',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              //const SizedBox(height: 30),
-              const Text(
-                'BOTAŞ',
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 24,
-                  fontFamily: 'poppins',
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'ST Müşteri Kodu',
+                  border: OutlineInputBorder(),
                 ),
               ),
-              const Text(
-                'MÜŞTERİ PORTALI',
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
-                  fontFamily: 'poppins',
+              SizedBox(height: 16),
+              Text(
+                'ST Adı',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'ST Adı',
+                  border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: 16),
+              Text(
+                'EPDK Sektörü',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'EPDK Sektörü',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'İstasyon Adı',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'İstasyon Adı',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'Hacim',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'Hacim',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).viewInsets.bottom,
+              ), // Klavye açıldığında kayma
+              SizedBox(height: 16), // Ekstra boşluk ekledik
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: TextField(
-                      controller: null,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Müşteri Numaranız',
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 0), // Yatay kenarlardan padding'i kaldırıyoruz
                 child: InkWell(
                   onTap: null,
                   child: Container(
-                    padding: const EdgeInsets.all(13),
+                    width: double
+                        .infinity, // Container'ın tam genişlikte olmasını sağlar
+                    padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: Colors.red[900],
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Center(
                       child: Text(
-                        'Şifre Sıfırlama Talep Et',
+                        'Kaydet',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
@@ -119,7 +136,7 @@ class _SerbestTuketiciEklemeState extends State<SerbestTuketiciEkleme> {
                     ),
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ),

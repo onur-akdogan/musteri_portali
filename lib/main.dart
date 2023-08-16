@@ -3,18 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:musteri_portali/future/future.dart';
 import 'package:musteri_portali/screens/login_page.dart'; // login_page.dart dosyanızı eklediğinizi varsayalım
 
-class MyHttpoverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port) {
-        return true;
-      };
-  }
-}
-
 void main() {
-  HttpOverrides.global = new MyHttpoverrides();
   runApp(MyApp());
 }
 
@@ -75,7 +64,6 @@ class _PreloaderScreenState extends State<PreloaderScreen> {
     super.initState();
     // Simüle edilen gecikme süresi
     Future.delayed(const Duration(seconds: 2), () {
-      fetchData();
       Navigator.pushReplacement(
         // Preloader süresi tamamlandığında LoginPage'a yönlendir
         context,

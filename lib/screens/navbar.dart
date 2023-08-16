@@ -79,11 +79,6 @@ class Navbar extends StatelessWidget {
                           builder: (context) => const TMBarsivi()),
                     );
                   }),
-              const ListTile(
-                leading: Icon(Icons.home),
-                title: Text('TMB Grafiği'),
-                onTap: null,
-              ),
             ],
           ),
           //Sözleşme Navbar
@@ -97,11 +92,6 @@ class Navbar extends StatelessWidget {
               ),
             ),
             children: [
-              ListTile(
-                leading: Icon(Icons.home),
-                title: Text('DGASS'),
-                onTap: null,
-              ),
               ListTile(
                 leading: Icon(Icons.home),
                 title: Text('Tehis Listesi'),
@@ -130,12 +120,7 @@ class Navbar extends StatelessWidget {
               ),
             ),
             children: [
-              ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Revize Faturalar'),
-                onTap: null,
-              ),
-              ListTile(
+              const ListTile(
                 leading: Icon(Icons.home),
                 title: Text('Doğal Gaz Tüketim Faturalama'),
                 onTap: null,
@@ -164,28 +149,7 @@ class Navbar extends StatelessWidget {
               ),
             ],
           ),
-          const ExpansionTile(
-            leading: Icon(Icons.data_saver_on),
-            title: Text(
-              'Veri',
-              style: TextStyle(
-                fontFamily: 'poppins',
-                fontSize: 18,
-              ),
-            ),
-            children: [
-              ListTile(
-                leading: Icon(Icons.abc_rounded),
-                title: Text("Hane Bildirim"),
-                onTap: null,
-              ),
-              ListTile(
-                leading: Icon(Icons.abc_outlined),
-                title: Text('Bağımsız Birim Sayıları'),
-                onTap: null,
-              ),
-            ],
-          ),
+
           ListTile(
             leading: const Icon(Icons.logout),
             title: const Text(
