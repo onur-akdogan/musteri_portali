@@ -49,7 +49,7 @@ class Navbar extends StatelessWidget {
             },
           ),
           ExpansionTile(
-            leading: const Icon(Icons.home),
+            leading: const Icon(Icons.assignment_outlined),
             title: const Text(
               'TMB',
               style: TextStyle(
@@ -59,7 +59,7 @@ class Navbar extends StatelessWidget {
             ),
             children: [
               ListTile(
-                leading: const Icon(Icons.home),
+                leading: const Icon(Icons.assignment_outlined),
                 title: const Text('Miktar Girişi'),
                 onTap: /* null */ () {
                   Navigator.push(
@@ -70,7 +70,7 @@ class Navbar extends StatelessWidget {
                 },
               ),
               ListTile(
-                  leading: Icon(Icons.home),
+                  leading: Icon(Icons.assignment_outlined),
                   title: Text('TMB Arşivi'),
                   onTap: () {
                     Navigator.push(
@@ -93,7 +93,7 @@ class Navbar extends StatelessWidget {
             ),
             children: [
               ListTile(
-                leading: Icon(Icons.home),
+                leading: Icon(Icons.border_color),
                 title: Text('Tehis Listesi'),
                 onTap: () {
                   Navigator.push(
@@ -104,13 +104,13 @@ class Navbar extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.home),
+                leading: Icon(Icons.border_color),
                 title: Text('Tahis Listesi'),
                 onTap: null,
               ),
             ],
           ),
-          ExpansionTile(
+          ListTile(
             leading: Icon(Icons.newspaper),
             title: Text(
               'Fatura',
@@ -119,35 +119,6 @@ class Navbar extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            children: [
-              const ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Doğal Gaz Tüketim Faturalama'),
-                onTap: null,
-              ),
-              ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Serbest Tüketici Tanımlama'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SerbestTuketiciBildirimi(),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Aylık Tüketim Kırılımı'),
-                onTap: null,
-              ),
-              ListTile(
-                leading: Icon(Icons.home),
-                title: Text('SKB Faturaları'),
-                onTap: null,
-              ),
-            ],
           ),
 
           ListTile(
