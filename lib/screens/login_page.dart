@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:musteri_portali/screens/dashboard.dart';
 import 'forgot_password.dart';
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+import 'package:musteri_portali/core/variables.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -137,18 +141,24 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _login() {
-    String username = 'burak';
-    String password = '123456';
-
-    if (_kullaniciAdi.text == username && _sifre.text == password) {
-      // Kullanıcı adı ve şifre doğruysa Dashboard sayfasına yönlendir
+  void _login() async {
+    var url = Uri.http(baseurl, '/kullanici/giris');
+    var response = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        "kullanciAdi": _kullaniciAdi.text,
+        "kullaniciSifre": _sifre.text,
+      }),
+    );
+    if (response.statusCode == 200) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const Dashboard()),
       );
     } else {
-      // Kullanıcı adı ve şifre yanlışsa hata mesajı göster
       showDialog(
         context: context,
         builder: (BuildContext context) {
