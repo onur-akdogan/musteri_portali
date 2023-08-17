@@ -1,6 +1,4 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:musteri_portali/future/future.dart';
 import 'package:musteri_portali/screens/login_page.dart'; // login_page.dart dosyanızı eklediğinizi varsayalım
 
 void main() {

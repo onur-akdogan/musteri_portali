@@ -12,7 +12,7 @@ class _FaturaListesiState extends State<FaturaListesi> {
 
   Future<void> veriCek() async {
     final response =
-        await http.get(Uri.parse('http://10.0.2.2:8080/fatura/faturalar'));
+        await http.post(Uri.parse('http://10.0.2.2:8080/fatura/faturalar'));
 
     if (response.statusCode == 200) {
       setState(() {
