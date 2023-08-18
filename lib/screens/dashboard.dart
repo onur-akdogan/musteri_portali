@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'navbar.dart';
+import 'package:musteri_portali/core/variables.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:musteri_portali/future/future.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -9,12 +14,26 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  int musteriId = 0;
+  @override
+  void initState() {
+    super.initState();
+    _getMusteriId();
+  }
+
+  Future<void> _getMusteriId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      musteriId = prefs.getInt('musteriId') ?? 0; // Varsayılan değer
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const Navbar(),
       appBar: AppBar(
-        title: const Text('BOTAŞ MÜŞTERİ PORTALI'),
+        title: Text('BOTAŞ MÜŞTERİ PORTALI' + musteriId.toString()),
         backgroundColor: const Color.fromARGB(255, 210, 20, 26),
       ),
       body: const MainPage(),
@@ -45,7 +64,7 @@ class MainPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'YSM Miktarı',
+                    'Toplam Tutar',
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,

@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:musteri_portali/core/variables.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -149,14 +150,20 @@ class _LoginPageState extends State<LoginPage> {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        "kullanciAdi": _kullaniciAdi.text,
+        "kullaniciAdi": _kullaniciAdi.text,
         "kullaniciSifre": _sifre.text,
       }),
     );
     if (response.statusCode == 200) {
+      Map<String, dynamic> responseData = json.decode(response.body);
+      int musteriId = responseData['musteri']['id'];
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setInt('musteriId', musteriId);
+
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Dashboard()),
+        MaterialPageRoute(builder: (context) => Dashboard()),
       );
     } else {
       showDialog(

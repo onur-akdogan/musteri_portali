@@ -66,7 +66,8 @@ class _MainPageState extends State<MainPage> {
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             title: Text('Fatura Numarası: ${faturalar[index]['id']}'),
-            subtitle: Text('' + faturalar[index]['tutar'].toString()),
+            subtitle: Text(
+                'Fatura Tutarı: ' + faturalar[index]['tutar'].toString() + '₺'),
           );
         },
       ),

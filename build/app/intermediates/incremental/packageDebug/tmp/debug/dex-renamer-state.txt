@@ -1,4 +1,4 @@
-#Fri Aug 18 11:20:10 TRT 2023
+#Fri Aug 18 20:33:42 TRT 2023
 base.0=C\:\\musteri_portali\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

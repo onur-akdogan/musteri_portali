@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:musteri_portali/screens/faturalar.dart';
 import 'package:musteri_portali/screens/miktar.dart';
 import 'tehislistesi.dart';
 import 'login_page.dart';
 import 'tmbarsiv.dart';
 import 'dashboard.dart';
-import 'faturalar.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
@@ -122,7 +122,7 @@ class Navbar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Faturalar()),
+                MaterialPageRoute(builder: (context) => const Faturalar()),
               );
             },
           ),
