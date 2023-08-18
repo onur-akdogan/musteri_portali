@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:musteri_portali/screens/miktar.dart';
-import 'package:musteri_portali/screens/serbesttuketicibilidirimi.dart';
 import 'tehislistesi.dart';
 import 'login_page.dart';
 import 'tmbarsiv.dart';
 import 'dashboard.dart';
+import 'faturalar.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
@@ -119,6 +119,12 @@ class Navbar extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Faturalar()),
+              );
+            },
           ),
 
           ListTile(
