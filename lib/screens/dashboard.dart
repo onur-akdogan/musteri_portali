@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'navbar.dart';
+import 'package:musteri_portali/core/variables.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashboard extends StatefulWidget {
@@ -12,16 +14,32 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   int musteriId = 0;
+  var musteriAdi = '';
+  var kullaniciMail = '';
   @override
   void initState() {
     super.initState();
     _getMusteriId();
+    _getMusteriAdi();
   }
 
   Future<void> _getMusteriId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      musteriId = prefs.getInt('musteriId') ?? 0; // Varsayılan değer
+      musteriId = prefs.getInt('musteriId') ?? 0;
+    });
+  }
+
+  Future<void> _getMusteriAdi() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      musteriAdi = prefs.getString('musteriAdi') ?? "";
+    });
+  }
+  Future<void> _getKullaniciMail() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      kullaniciMail = prefs.getString('kullaniciMail') ?? "";
     });
   }
 
@@ -30,7 +48,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       drawer: const Navbar(),
       appBar: AppBar(
-        title: Text('BOTAŞ MÜŞTERİ PORTALI' + musteriId.toString()),
+        title: Text('BOTAŞ MÜŞTERİ PORTALI'),
         backgroundColor: const Color.fromARGB(255, 210, 20, 26),
       ),
       body: const MainPage(),

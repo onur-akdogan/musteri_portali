@@ -5,12 +5,29 @@ import 'tehislistesi.dart';
 import 'login_page.dart';
 import 'tmbarsiv.dart';
 import 'dashboard.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:musteri_portali/core/variables.dart';
+import 'package:http/http.dart' as http;
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
-  // ignore: constant_identifier_names
   static const IconData bar_chart =
       IconData(0xe0cc, fontFamily: 'MaterialIcons');
+  Future<int> _getMusteriId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt('musteriId') ?? 0;
+  }
+
+  Future<String> _getMusteriAdi() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('musteriAdi') ?? '';
+  }
+
+  Future<String> _getKullaniciMail() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('kullaniciMail') ?? '';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -18,8 +35,58 @@ class Navbar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: const Text('Burak'),
-            accountEmail: const Text('info@botas.gov.tr'),
+            accountName: FutureBuilder<String>(
+              future: _getMusteriAdi(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Text(
+                    'Müşteri Adı Yükleniyor...',
+                    style: TextStyle(fontSize: 18),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text(
+                    'Hata Oluştu: ${snapshot.error}',
+                    style: TextStyle(fontSize: 18),
+                  );
+                } else if (snapshot.hasData && snapshot.data != null) {
+                  return Text(
+                    snapshot.data!,
+                    style: TextStyle(fontSize: 18),
+                  );
+                } else {
+                  return Text(
+                    'Müşteri Adı Alınamadı',
+                    style: TextStyle(fontSize: 18),
+                  );
+                }
+              },
+            ),
+            accountEmail: FutureBuilder<String>(
+              future: _getKullaniciMail(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Text(
+                    'Müşteri Adı Yükleniyor...',
+                    style: TextStyle(fontSize: 18),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text(
+                    'Hata Oluştu: ${snapshot.error}',
+                    style: TextStyle(fontSize: 18),
+                  );
+                } else if (snapshot.hasData && snapshot.data != null) {
+                  return Text(
+                    snapshot.data!,
+                    style: TextStyle(fontSize: 18),
+                  );
+                } else {
+                  return Text(
+                    'Müşteri Adı Alınamadı',
+                    style: TextStyle(fontSize: 18),
+                  );
+                }
+              },
+            ),
             currentAccountPicture: CircleAvatar(
               backgroundColor: Colors.transparent,
               child: ClipOval(
@@ -34,6 +101,31 @@ class Navbar extends StatelessWidget {
             decoration: const BoxDecoration(
               color: Color.fromARGB(255, 228, 148, 150),
             ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: FutureBuilder<int>(
+              future: _getMusteriId(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text(
+                    'Anasayfa (Müşteri ID: ${snapshot.data})',
+                    style: TextStyle(fontSize: 18),
+                  );
+                } else {
+                  return Text(
+                    'Anasayfa (Müşteri ID alınamadı)',
+                    style: TextStyle(fontSize: 18),
+                  );
+                }
+              },
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Dashboard()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.home),

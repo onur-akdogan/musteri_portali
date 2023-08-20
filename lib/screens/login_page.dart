@@ -157,9 +157,13 @@ class _LoginPageState extends State<LoginPage> {
     if (response.statusCode == 200) {
       Map<String, dynamic> responseData = json.decode(response.body);
       int musteriId = responseData['musteri']['id'];
+      var musteriAdi = responseData['musteri']['musteriAdi'];
+      var kullaniciMail = responseData['kullaniciMail'];
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setInt('musteriId', musteriId);
+      await prefs.setString('musteriAdi', musteriAdi);
+      await prefs.setString('kullaniciMail', kullaniciMail);
 
       Navigator.push(
         context,
