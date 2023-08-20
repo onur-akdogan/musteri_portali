@@ -36,6 +36,7 @@ class _DashboardState extends State<Dashboard> {
       musteriAdi = prefs.getString('musteriAdi') ?? "";
     });
   }
+
   Future<void> _getKullaniciMail() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -79,7 +80,7 @@ class MainPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Toplam Tutar',
+                    '2023 Toplam Tutar',
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,

@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'navbar.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:musteri_portali/core/variables.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TMBarsivi extends StatelessWidget {
   const TMBarsivi({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: tmbArsiv(),
-    );
+    return tmbArsiv();
   }
 }
 
@@ -58,15 +59,29 @@ class Tablolama extends StatefulWidget {
 }
 
 class _TablolamaState extends State<Tablolama> {
-  final List<String> items = List<String>.generate(10, (i) => '$i');
+  List<dynamic> tmbarsivi = [];
 
-  void _onCardTapped(int index) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => DetailPage(cardIndex: index),
-      ),
-    );
+  Future<void> veriCek() async {
+    final response = await http.get(Uri.parse(
+      'http://10.0.2.2:8080/gerceklesen_tmb/getByMusteriId/${musteriId}',
+    ));
+
+    if (response.statusCode == 200) {
+      setState(() {
+        tmbarsivi.clear();
+        tmbarsivi = json.decode(response.body);
+        print(tmbarsivi.toString());
+      });
+      setState(() {});
+    }
+  }
+
+  final List<String> items = List<String>.generate(10, (i) => '$i');
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    veriCek();
   }
 
   @override
@@ -78,11 +93,22 @@ class _TablolamaState extends State<Tablolama> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              for (var i = 1; i <= 16; i++) // Original card + 15 new cards
+              for (int i = 0;
+                  i <= tmbarsivi.length - 1;
+                  i++) // Original card + 15 new cards
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: GestureDetector(
-                    onTap: () => _onCardTapped(i),
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailPage(
+                            miktar: tmbarsivi[i]['miktar'],
+                            tarih: tmbarsivi[i]['tarih'],
+                            teslim_noktasi: tmbarsivi[i]['istasyon']
+                                ['istasyon_adi']),
+                      ),
+                    ),
                     child: Card(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -99,14 +125,14 @@ class _TablolamaState extends State<Tablolama> {
                           ),
                         ),
                         title: Text(
-                          "Teslim Noktası: $i",
+                          "Teslim Noktası:",
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
-                          "Tüketim Tarihi: 01.01.2021",
+                          "Tüketim Tarihi:${(tmbarsivi[i]['tarih'])}",
                           style: TextStyle(color: Colors.black),
                         ),
                         trailing: Icon(Icons.more_vert_sharp),
@@ -123,9 +149,15 @@ class _TablolamaState extends State<Tablolama> {
 }
 
 class DetailPage extends StatelessWidget {
-  final int cardIndex;
+  var miktar;
+  var tarih;
+  var teslim_noktasi;
 
-  DetailPage({required this.cardIndex});
+  DetailPage({
+    required this.miktar,
+    required this.tarih,
+    required this.teslim_noktasi,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +193,7 @@ class DetailPage extends StatelessWidget {
               style: TextStyle(fontSize: 28),
             ),
             subtitle: Text(
-              '$cardIndex',
+              '$teslim_noktasi',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -188,7 +220,7 @@ class DetailPage extends StatelessWidget {
               style: TextStyle(fontSize: 28),
             ),
             subtitle: Text(
-              '$cardIndex',
+              '$tarih',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -215,7 +247,7 @@ class DetailPage extends StatelessWidget {
               style: TextStyle(fontSize: 28),
             ),
             subtitle: Text(
-              '$cardIndex',
+              '$miktar',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

@@ -104,31 +104,6 @@ class Navbar extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.home),
-            title: FutureBuilder<int>(
-              future: _getMusteriId(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Text(
-                    'Anasayfa (Müşteri ID: ${snapshot.data})',
-                    style: TextStyle(fontSize: 18),
-                  );
-                } else {
-                  return Text(
-                    'Anasayfa (Müşteri ID alınamadı)',
-                    style: TextStyle(fontSize: 18),
-                  );
-                }
-              },
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Dashboard()),
-              );
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.home),
             title: const Text(
               'Anasayfa',
               style: TextStyle(fontSize: 18),
@@ -214,7 +189,7 @@ class Navbar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Faturalar()),
+                MaterialPageRoute(builder: (context) => Faturalar(musteriId: musteriId,)),
               );
             },
           ),
