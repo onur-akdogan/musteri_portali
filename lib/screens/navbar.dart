@@ -7,7 +7,6 @@ import 'tmbarsiv.dart';
 import 'dashboard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:musteri_portali/core/variables.dart';
-import 'package:http/http.dart' as http;
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
@@ -189,7 +188,10 @@ class Navbar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Faturalar(musteriId: musteriId,)),
+                MaterialPageRoute(
+                    builder: (context) => Faturalar(
+                          musteriId: musteriId,
+                        )),
               );
             },
           ),
