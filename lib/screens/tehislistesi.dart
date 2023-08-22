@@ -58,7 +58,7 @@ class _tehisListeState extends State<tehisListe> {
             ),
           ],
         ),
-        backgroundColor: const Color.fromARGB(255, 210, 20, 26),
+          backgroundColor: const Color.fromARGB(255, 210, 20, 26),
       ),
       body: Column(
         children: [
