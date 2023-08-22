@@ -131,7 +131,7 @@ class Navbar extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const NavigationBarApp()),
+                        builder: (context) => const MiktarGirisi()),
                   );
                 },
               ),
