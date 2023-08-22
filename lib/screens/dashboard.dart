@@ -65,16 +65,16 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  late Future<List<Map<String, dynamic>>> veriFuture;
+  late Future<Map<String, dynamic>> veriFuture;
 
-  Future<List<Map<String, dynamic>>> veriCek() async {
+  Future<Map<String, dynamic>> veriCek() async {
     final response = await http.get(Uri.parse(
       'http://10.0.2.2:8080/sozlesme/getMusteriyillikSozlesme/2023/${musteriId}',
     ));
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
-      return List<Map<String, dynamic>>.from(jsonData);
+      return Map<String, dynamic>.from(jsonData);
     } else {
       throw Exception('Veri getirilemedi.');
     }
@@ -91,17 +91,17 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[50],
       body: Center(
-        child: FutureBuilder<List<Map<String, dynamic>>>(
+        child: FutureBuilder<Map<String, dynamic>>(
           future: veriFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return CircularProgressIndicator();
             } else if (snapshot.hasError) {
               return Text('Hata: ${snapshot.error}');
-            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            } else if (!snapshot.hasData) {
               return Text('Veri bulunamadı.');
             } else {
-              final veri = snapshot.data!.first;
+              final veri = snapshot.data!;
 
               double ysmMiktar = veri['ysmMiktar'];
               double azamiYillikMiktar = veri['azamiYillikMiktar'];
@@ -123,7 +123,7 @@ class _MainPageState extends State<MainPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '2023 Toplam Tutar',
+                          'YSM Miktar',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,
@@ -156,7 +156,7 @@ class _MainPageState extends State<MainPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Toplam Tüketim',
+                          'Azami Yıllık Miktar',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,
@@ -188,7 +188,7 @@ class _MainPageState extends State<MainPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'YSM Miktarı',
+                          'AAT Oranı',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,
