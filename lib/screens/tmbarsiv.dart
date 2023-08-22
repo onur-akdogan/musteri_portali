@@ -4,7 +4,6 @@ import 'navbar.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:musteri_portali/core/variables.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class TMBarsivi extends StatelessWidget {
   const TMBarsivi({super.key});
