@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:musteri_portali/core/variables.dart';
 import 'navbar.dart';
 import 'package:http/http.dart' as http;
@@ -14,14 +15,13 @@ class MiktarGirisi extends StatefulWidget {
 class _MiktarGirisiState extends State<MiktarGirisi> {
   List<String> dropdownItems = [];
   List<Map<String, dynamic>> bildirimVeriler = [];
-  String? selectedBildirim;
-  String? selectedBildirimTipi;
+
+  int? selectedBildirim;
 
   final TextEditingController _miktargirisi = TextEditingController();
   DateTime? selectedDate;
   String? selectedStation;
   int selectedStationId = -1;
-  String? selectedValue;
 
   @override
   void initState() {
@@ -150,23 +150,21 @@ class _MiktarGirisiState extends State<MiktarGirisi> {
                   const SizedBox(height: 16),
                   Column(
                     children: bildirimVeriler.map((veri) {
-                      return RadioListTile<String>(
+                      return RadioListTile<int>(
                         title: Text(veri['bildirim_tipi'] as String),
-                        value: veri['bildirim_tipi'] as String,
-                        groupValue: selectedValue,
+                        value: veri['id'] as int,
+                        groupValue: selectedBildirim,
                         onChanged: (value) {
                           setState(() {
-                            selectedValue = value;
-                            selectedBildirimTipi =
-                                value; // Seçilen bildirim_tipi'ni güncelle
+                            selectedBildirim = value;
                           });
                         },
                       );
                     }).toList(),
                   ),
-                  if (selectedBildirimTipi != null)
+                  if (selectedBildirim != null)
                     Text(
-                      'Seçilen Bildirim Tipi: $selectedBildirimTipi',
+                      'Seçilen Bildirim ID: $selectedBildirim',
                       style: TextStyle(fontSize: 16),
                     ),
                   const SizedBox(height: 16),
@@ -232,9 +230,14 @@ class _MiktarGirisiState extends State<MiktarGirisi> {
   }
 
   Future<void> _miktarGirisi() async {
+    double girisMiktari = double.parse(_miktargirisi.text);
+    final String tarihString = selectedDate.toString();
+    DateTime parsedDate = DateTime.parse(tarihString);
+    String formattedTarih = DateFormat('yyyy-MM-dd').format(parsedDate);
     if (selectedDate == null ||
         selectedStationId == -1 ||
-        selectedValue == null) {
+        selectedBildirim == null ||
+        _miktargirisi.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Lütfen tüm alanları doldurun.'),
@@ -252,11 +255,11 @@ class _MiktarGirisiState extends State<MiktarGirisi> {
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode(<String, dynamic>{
-          "miktar": _miktargirisi.text,
-          "tarih": selectedDate.toString(),
-          "musteri": musteriId,
-          "istasyon": dropdownItems[selectedStationId],
-          "bildirim": selectedValue 
+          "miktar": girisMiktari,
+          "tarih": formattedTarih.toString(),
+          "musteri": {"id": musteriId},
+          "istasyon": {"id": selectedStationId},
+          "bildirim": {"id": selectedBildirim}
         }),
       );
 
@@ -270,7 +273,7 @@ class _MiktarGirisiState extends State<MiktarGirisi> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Bir hata oluştu. Tekrar deneyin.'),
+            content: Text('Bir hata oluştu. Tekrar deneyin.1'),
             duration: Duration(seconds: 2),
           ),
         );
@@ -279,10 +282,14 @@ class _MiktarGirisiState extends State<MiktarGirisi> {
       print('Hata: $error');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Bir hata oluştu. Tekrar deneyin.'),
+          content: Text('Bir hata oluştu. Tekrar deneyin.2'),
           duration: Duration(seconds: 2),
         ),
       );
     }
   }
+}
+
+void main() {
+  runApp(MaterialApp(home: MiktarGirisi()));
 }
