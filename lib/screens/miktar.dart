@@ -59,7 +59,7 @@ class _MiktarGirisiState extends State<MiktarGirisi> {
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
         List<String> items =
-            data.map<String>((item) => item['istasyon_adi'] as String).toList();
+            data.map<String>((item) => item as String).toList();
 
         setState(() {
           dropdownItems = items;
@@ -133,14 +133,17 @@ class _MiktarGirisiState extends State<MiktarGirisi> {
                   DropdownButton<String>(
                     items: dropdownItems.map((String value) {
                       return DropdownMenuItem(
-                        child: Text(value),
-                        value: value,
+                onTap: () {
+                  selectedStationId=value['id'];
+                },
+                        child: Text(value['istasyon_adi']),
+                        value: value['id'],
                       );
                     }).toList(),
                     onChanged: (value) {
                       setState(() {
-                        selectedStation = value;
-                        selectedStationId = dropdownItems.indexOf(value!);
+                        selectedStation = value['istasyon_adi'];
+                        selectedStationId =value['id'];
                       });
                     },
                     value: selectedStation,
